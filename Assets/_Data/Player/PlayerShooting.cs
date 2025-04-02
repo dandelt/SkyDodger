@@ -27,7 +27,8 @@ public class PlayerShooting : MonoBehaviour
         this.shootTimer = 0f;
         Vector3 spawnPos = transform.parent.position;
         Quaternion spawnRot = transform.parent.rotation;
-        Instantiate(this.bulletPrefab, spawnPos, spawnRot);
+        Transform newBullet = Instantiate(this.bulletPrefab, spawnPos, spawnRot);
+        newBullet.gameObject.SetActive(true);
     }
 
     protected virtual bool IsShooting()
