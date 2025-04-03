@@ -4,7 +4,6 @@ using UnityEngine;
 public class PlayerShooting : MonoBehaviour
 {
     [SerializeField] protected bool isShooting = false;
-    [SerializeField] protected Transform bulletPrefab;
     [SerializeField] protected float shootDelay = 0.1f;
     [SerializeField] protected float shootTimer = 0f;
 
@@ -27,7 +26,7 @@ public class PlayerShooting : MonoBehaviour
         this.shootTimer = 0f;
         Vector3 spawnPos = transform.parent.position;
         Quaternion spawnRot = transform.parent.rotation;
-        Transform newBullet = Instantiate(this.bulletPrefab, spawnPos, spawnRot);
+        Transform newBullet = BulletSpawner.Instance.Spawn(BulletSpawner.bulletOne,spawnPos,spawnRot);
         newBullet.gameObject.SetActive(true);
     }
 
